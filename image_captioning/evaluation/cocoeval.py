@@ -1,3 +1,4 @@
+#%%
 from pycocotools.coco import COCO
 from pycocoevalcap.eval import COCOEvalCap
 import json
@@ -21,10 +22,11 @@ if __name__ == '__main__':
 
     for f in glob.glob(os.path.join(args.result_file_path, '**/*.json'), recursive=True):
         
-        if "hyperparam_experiments" in f:
+        if "hyperparam_experiments" and "mean_metrics" in f:
             result_files.append(f)
             #print(f)
-
+            
+#%%
     result_dicts = []
 
     for result_file in result_files:
