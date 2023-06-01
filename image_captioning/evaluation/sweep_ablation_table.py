@@ -33,6 +33,12 @@ def ablation_plot(sweep_table,
     if truncation_val != None:
         sweep_table_long = sweep_table_long[sweep_table_long[hyperparam] <= truncation_val]
 
+    if hyperparam == "l":
+        hyperparam_label = "number of keywords"
+
+    else:
+        hyperparam_label = "beta"
+
     plot = (
 
     ggplot(sweep_table_long)
@@ -42,6 +48,8 @@ def ablation_plot(sweep_table,
     + geom_line()
 
     + geom_point(shape='x', size=2) 
+
+    + xlab(hyperparam_label)
     
     + ylab("Score")
 
